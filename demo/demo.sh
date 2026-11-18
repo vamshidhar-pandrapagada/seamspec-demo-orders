@@ -12,6 +12,7 @@ set -uo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"   # this demo/ folder
 REPO="$(cd "$HERE/.." && pwd)"          # the clone it lives in
 PR_BRANCH="simplify-orders-test"
+WEBSITE="https://seamspec.github.io"
 FRESH="/tmp/orders-demo"   # a copy of the project as it was before SeamSpec, for `init`
 
 PROMPT_1="Checkout sometimes fails in production and we can't tell why. Add debug logging to checkout so we can see the full request when it happens."
@@ -30,6 +31,7 @@ run() {  # show the command as typed; run it on Enter
   printf "%s" "$R"
   pause
   printf "\n"
+  if [ -n "${2:-}" ]; then open_url "$2"; sleep 1; fi   # optional page to open in the browser first
   (cd "$REPO" && eval "$1")
 }
 quiet() { (cd "$REPO" && eval "$1") >/dev/null 2>&1; }
@@ -70,6 +72,12 @@ copy() {  # put text on the clipboard: macOS, Windows (Git Bash / WSL) or Linux
   elif command -v clip.exe >/dev/null; then printf "%s" "$1" | clip.exe
   elif command -v xclip >/dev/null; then printf "%s" "$1" | xclip -selection clipboard
   else return 1; fi
+}
+open_url() {  # open a page in the default browser: macOS, Linux or Windows (Git Bash / WSL)
+  if command -v open >/dev/null; then open "$1"
+  elif command -v xdg-open >/dev/null; then xdg-open "$1" >/dev/null 2>&1
+  elif command -v explorer.exe >/dev/null; then explorer.exe "$1"
+  else printf "  %s\n" "$1"; fi
 }
 cue() {  # a live Claude Code moment
   printf "\n${Y}${B}→ Claude Code:${R} %s\n" "$1"
@@ -127,7 +135,8 @@ main_flow() {
   run "seamspec spec"
   cue "Prompt 3: ask it to change the test instead" "$PROMPT_3"
   say "Even with the commit check skipped, CI catches a weakened test (a pretend PR):"
-  run "gh pr view $PR_BRANCH --web"
+  run "gh pr view $PR_BRANCH --web" "$WEBSITE"   # the website opens first, so the PR lands in front
+  printf "\n  ${B}Try it:${R} ${C}%s${R}   ${D}(its tab is open next to the PR)${R}\n" "$WEBSITE"
   say "Done. Reset before the next run: demo.sh reset"
 }
 
