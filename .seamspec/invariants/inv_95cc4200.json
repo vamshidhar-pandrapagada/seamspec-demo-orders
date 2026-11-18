@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "id": "inv_95cc4200",
+  "title": "A customer only sees their own orders",
+  "assertion": "A customer can never list or open another customer's orders.",
+  "scope": {
+    "paths": [
+      "orders/**"
+    ],
+    "tags": []
+  },
+  "status": "LOCKED",
+  "origin": {
+    "type": "manual",
+    "text": "Security agreement: every order lookup is scoped to the customer asking (tenant isolation).",
+    "ref": null
+  },
+  "verification": {
+    "runner": "pytest",
+    "harness_path": ".seamspec/tests/test_inv_95cc4200.py",
+    "harness_sha256": "575f6ec19bd39c6d3045331cd81843a4e7de4c0f4e6dcd92b0453ff00e4bc38c",
+    "assertion_sha256": "656aaaff95b68137b4031e3516f0b4ea74ceae4281e36ef09824192d4bcdec4e"
+  },
+  "adr_id": null,
+  "created_at": "2026-11-17T21:30:44.864322Z",
+  "approved_at": "2026-11-18T01:30:14.946717Z",
+  "approved_by": "Vamshidhar Pandrapagada <25401978+vamshidhar-pandrapagada@users.noreply.github.com>",
+  "superseded_by": null,
+  "status_reason": null,
+  "decided_via": "terminal",
+  "critical": false
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "id": "inv_01377b4b",
+  "title": "A password-reset token works only once",
+  "assertion": "A password-reset token can be used once; using it again, or using a made-up token, is refused.",
+  "scope": {
+    "paths": [
+      "orders/**"
+    ],
+    "tags": []
+  },
+  "status": "LOCKED",
+  "origin": {
+    "type": "manual",
+    "text": "Security agreement: a leaked or replayed reset link must not let anyone change the password again.",
+    "ref": null
+  },
+  "verification": {
+    "runner": "pytest",
+    "harness_path": ".seamspec/tests/test_inv_01377b4b.py",
+    "harness_sha256": "c4a5fc170039335e6225139be34a8f6e3e62c7811d54bc5b0017f79a7b7c1f30",
+    "assertion_sha256": "29625bc4e9b8fc11aa7c8573321fc4d30d9fd9cc46534703b394e5907284b36f"
+  },
+  "adr_id": null,
+  "created_at": "2026-11-17T21:30:45.042339Z",
+  "approved_at": "2026-11-18T01:30:17.510690Z",
+  "approved_by": "Vamshidhar Pandrapagada <25401978+vamshidhar-pandrapagada@users.noreply.github.com>",
+  "superseded_by": null,
+  "status_reason": null,
+  "decided_via": "terminal",
+  "critical": false
+}

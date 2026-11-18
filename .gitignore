@@ -1,3 +1,13 @@
 .venv/
 __pycache__/
 .pytest_cache/
+
+# SeamSpec: machine-local state and caches
+.seamspec/.local/
+.seamspec/**/__pycache__/
+
+# SeamSpec: your personal scratchpad (remove this line to share it)
+BRAINDUMP.md
+
+# SeamSpec: Claude Code plugin enabled on this machine only
+.claude/settings.local.json

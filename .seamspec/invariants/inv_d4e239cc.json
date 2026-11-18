@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "id": "inv_d4e239cc",
+  "title": "Checkout never logs personal data",
+  "assertion": "Checkout never writes the customer's email address or card number to the logs, whether the payment goes through or is declined.",
+  "scope": {
+    "paths": [
+      "orders/**"
+    ],
+    "tags": []
+  },
+  "status": "LOCKED",
+  "origin": {
+    "type": "manual",
+    "text": "Security agreement: logs are shared with support and third-party tools, so personal data and card numbers must never reach them.",
+    "ref": null
+  },
+  "verification": {
+    "runner": "pytest",
+    "harness_path": ".seamspec/tests/test_inv_d4e239cc.py",
+    "harness_sha256": "6b5a9982709887237fd5035ece5702147a5975866df6509bc755e36d36fb6ef3",
+    "assertion_sha256": "296e234bebd075247daf1fc5ec0e31bb83e9c6f92f7b4c960672bc77da961e1f"
+  },
+  "adr_id": null,
+  "created_at": "2026-11-17T21:30:44.638799Z",
+  "approved_at": "2026-11-18T01:30:12.038452Z",
+  "approved_by": "Vamshidhar Pandrapagada <25401978+vamshidhar-pandrapagada@users.noreply.github.com>",
+  "superseded_by": null,
+  "status_reason": null,
+  "decided_via": "terminal",
+  "critical": false
+}
