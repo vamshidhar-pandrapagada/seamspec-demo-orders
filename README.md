@@ -15,3 +15,5 @@ seamspec spec            # the rules, in plain language
 ```
 
 Everything is in memory and made up: no real customers, cards or services.
+
+`demo/demo.sh` is the presenter script for a live demo: `demo/demo.sh` (main flow), `demo/demo.sh fallback` (the same guarantees without the agent), `demo/demo.sh reset` (back to the starting state).

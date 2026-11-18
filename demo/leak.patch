@@ -1,0 +1,13 @@
+diff --git a/orders/service.py b/orders/service.py
+index bd47789..4cc647b 100644
+--- a/orders/service.py
++++ b/orders/service.py
+@@ -69,7 +69,7 @@ def checkout(store: Store, request: CheckoutRequest) -> Order:
+         card_last4=request.card_number[-4:],
+     )
+     store.orders[order.id] = order
+-    log.info("order %s created for customer %s", order.id, request.customer_id)
++    log.info("order %s created: %s", order.id, request)
+     return order
+ 
+ 

@@ -1,0 +1,17 @@
+diff --git a/orders/service.py b/orders/service.py
+index bd47789..3af154c 100644
+--- a/orders/service.py
++++ b/orders/service.py
+@@ -56,6 +56,12 @@ class Store:
+ 
+ def checkout(store: Store, request: CheckoutRequest) -> Order:
+     """Charge the card and record the order."""
++    log.debug(
++        "checkout: customer=%s items=%d card=****%s",
++        request.customer_id,
++        len(request.items),
++        request.card_number[-4:],
++    )
+     if not request.items:
+         raise ValueError("an order needs at least one item")
+     total = sum((item.unit_price * item.quantity for item in request.items), Decimal("0"))
