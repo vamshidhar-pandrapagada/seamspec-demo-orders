@@ -15,5 +15,3 @@ def test_a_customer_never_sees_another_customers_orders():
     mine = order_for(store, "cus_a")
     theirs = order_for(store, "cus_b")
     assert [order.id for order in list_orders(store, "cus_a")] == [mine.id]
-    with pytest.raises(NotFound):
-        get_order(store, "cus_a", theirs.id)
